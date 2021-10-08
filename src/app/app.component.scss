@@ -1,0 +1,32 @@
+.sidenav{
+    height: calc(100vh - 64px)
+}
+
+.sidenav-container {
+    min-width: 60px; 
+}
+
+.default-body{
+    padding: 36px;
+}
+
+.sidenav-list{
+    height: 100%;
+    text-align: center
+}
+
+.links-menu{
+    .mat-list-base .mat-list-item{
+      height: 37px;
+    }
+}
+
+.page-label{
+    padding-left: 5px;
+}
+
+.icon-container{
+    padding-top: 7px;
+    width: 30px;
+    border-radius: 6px;
+}
