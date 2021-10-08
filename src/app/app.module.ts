@@ -7,7 +7,7 @@ import { AddCategoryComponent } from './components/add-category/add-category.com
 import { CategoriessListComponent } from './components/categories-list/categories-list.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { MatFormFieldModule, MatIconModule, MatInputModule, MatListModule, MatSidenavModule } from '@angular/material';
+import { MatFormFieldModule, MatIconModule, MatInputModule, MatListModule, MatSelectModule, MatSidenavModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CreateEditDeviceComponent } from './components/create-edit-device/create-edit-device.component';
 import { DevicesListComponent } from './components/devices-list/devices-list.component'; 
@@ -33,7 +33,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     FlexLayoutModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

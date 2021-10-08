@@ -62,7 +62,6 @@ export class CategoriessListComponent implements OnInit {
   }
 
   addCategory() {
-    console.log('AAAAAAAAAA')
     this.router.navigate(['categories/add']);
   }
 }

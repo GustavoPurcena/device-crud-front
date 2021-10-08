@@ -1,1 +1,36 @@
-<p>devices-list works!</p>
+<div fxLayout="column">
+    <div>
+        <h4>Devices List</h4>
+        <ul class="list-group">
+            <li class="list-group-item" *ngFor="let device of devices">
+                <div fxLayout="row" fxLayoutAlign="space-between center" fxFlex=100>
+                    <div fxFlex="20">
+                        <span class="title">Partnumber:</span>{{ device.partNumber }}
+                    </div>
+                    <div fxFlex="20">
+                        <span class="title">Category:</span>{{ device.category ? device.category.name : 'Not found' }}
+                    </div>
+                    <div fxFlex="20">
+                        <span class="title">Color:</span>{{ device.color ? device.color : 'Not specified' }}
+                    </div>
+                    <div fxLayout="row" fxLayoutAlign="end center" fxFlex>
+                        <button class="m-3 btn btn-sm btn-success small-button-width" (click)="editDevice(device)">
+                            Edit
+                        </button>
+                        <button class="m-3 btn btn-sm btn-danger small-button-width" (click)="removeDevice(device)">
+                            Remove
+                        </button>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+            <button class="m-3 btn btn-sm btn-danger button-width" (click)="removeAllDevices()">
+                Remove All
+            </button>
+            <button class="m-3 btn btn-sm btn-success button-width" (click)="addDevice()">
+                Add New
+            </button>
+        </div>
+    </div>
+</div>

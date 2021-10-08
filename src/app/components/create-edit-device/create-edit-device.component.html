@@ -1,1 +1,32 @@
-<p>create-edit-device works!</p>
+<div>
+    <div fxLayout="column" fxLayoutAlign="space-between">
+
+        <div class="standard-width">
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label> partNumber </mat-label>
+                <input matInput [(ngModel)]="device.partNumber">
+            </mat-form-field>
+        </div>
+        <div class="standard-width">
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label> Color </mat-label>
+                <input matInput [(ngModel)]="device.color">
+            </mat-form-field>
+        </div>
+        <div class="standard-width">
+            <mat-form-field class="full-width" appearance="outline" *ngIf="categories">
+                <mat-label> Category </mat-label>
+                <mat-select [(ngModel)]="device.category">
+                    <mat-option *ngFor="let category of categories" [value]="category">
+                        {{ category.name }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="standard-width" fxLayout="row" fxLayoutAlign="space-between center">
+            <button (click)="redirectToDevices()" class="btn btn-danger">Cancel</button>
+            <button (click)="saveDevice()" class="btn btn-success">Submit</button>
+        </div>
+    </div>
+</div>
