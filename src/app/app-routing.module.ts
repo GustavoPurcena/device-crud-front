@@ -7,19 +7,12 @@ import { DevicesListComponent } from './components/devices-list/devices-list.com
 
 
 const routes: Routes = [
-
   { path: '', redirectTo: 'categories', pathMatch: 'full' },
-  {
-    path: 'categories', component: CategoriessListComponent, children: [
-      { path: 'add', component: AddCategoryComponent },
-    ]
-  },
-  {
-    path: 'devices', component: DevicesListComponent, children: [
-      { path: 'add', component: CreateEditDeviceComponent, data: { kind: 'create' } },
-      { path: 'edit/:id', component: CreateEditDeviceComponent, data: { kind: 'edit' } }
-    ]
-  }
+  { path: 'categories', component: CategoriessListComponent },
+  { path: 'categories/add', component: AddCategoryComponent },
+  { path: 'devices', component: DevicesListComponent },
+  { path: 'devices/add', component: CreateEditDeviceComponent, data: { kind: 'create' } },
+  { path: 'devices/edit/:id', component: CreateEditDeviceComponent, data: { kind: 'edit' } }
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

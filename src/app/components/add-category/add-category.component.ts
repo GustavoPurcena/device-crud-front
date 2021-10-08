@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Category } from 'src/app/models/category.model';
 import { CategoryService } from 'src/app/services/category.service';
 
@@ -12,33 +13,32 @@ export class AddCategoryComponent implements OnInit {
   category: Category = {
     name: ''
   };
-  submitted = false;
 
-  constructor(private CategoryService: CategoryService) { }
+  constructor(
+    private CategoryService: CategoryService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
   }
 
   saveCategory(): void {
     const data = {
-      title: this.category.name,
+      name: this.category.name,
     };
 
     this.CategoryService.create(data)
       .subscribe(
         response => {
           console.log(response);
-          this.submitted = true;
+          this.router.navigate(['categories']);
         },
         error => {
           console.log(error);
         });
   }
 
-  newCategory(): void {
-    this.submitted = false;
-    this.category = {
-      name: '',
-    };
+  redirectToCategories() {
+    this.router.navigate(['categories']);
   }
 }

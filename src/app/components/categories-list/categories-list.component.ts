@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Category } from 'src/app/models/category.model';
 import { CategoryService } from 'src/app/services/category.service';
 
@@ -9,22 +10,22 @@ import { CategoryService } from 'src/app/services/category.service';
 })
 export class CategoriessListComponent implements OnInit {
 
-  tutorials?: Category[];
-  currentTutorial: Category = {};
-  currentIndex = -1;
-  title = '';
+  categories?: Category[];
 
-  constructor(private categoryService: CategoryService) { }
+  constructor(
+    private categoryService: CategoryService,
+    private router: Router
+    ) { }
 
   ngOnInit(): void {
-    this.retrieveTutorials();
+    this.getCategories();
   }
 
-  retrieveTutorials(): void {
+  getCategories(): void {
     this.categoryService.getAll()
       .subscribe(
         data => {
-          this.tutorials = data;
+          this.categories = data;
           console.log(data);
         },
         error => {
@@ -33,17 +34,22 @@ export class CategoriessListComponent implements OnInit {
   }
 
   refreshList(): void {
-    this.retrieveTutorials();
-    this.currentTutorial = {};
-    this.currentIndex = -1;
+    this.getCategories();
   }
 
-  setActiveTutorial(tutorial: Category, index: number): void {
-    this.currentTutorial = tutorial;
-    this.currentIndex = index;
+  removeCategory(category: Category): void {
+    this.categoryService.delete(category.id)
+      .subscribe(
+        response => {
+          console.log(response);
+          this.refreshList();
+        },
+        error => {
+          console.log(error);
+        });
   }
 
-  removeAllTutorials(): void {
+  removeAllCategories(): void {
     this.categoryService.deleteAll()
       .subscribe(
         response => {
@@ -55,18 +61,8 @@ export class CategoriessListComponent implements OnInit {
         });
   }
 
-  searchTitle(): void {
-    this.currentTutorial = {};
-    this.currentIndex = -1;
-
-    this.categoryService.findByTitle(this.title)
-      .subscribe(
-        data => {
-          this.tutorials = data;
-          console.log(data);
-        },
-        error => {
-          console.log(error);
-        });
+  addCategory() {
+    console.log('AAAAAAAAAA')
+    this.router.navigate(['categories/add']);
   }
 }
