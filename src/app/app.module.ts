@@ -11,6 +11,7 @@ import { MatIconModule, MatListModule, MatSidenavModule } from '@angular/materia
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CreateEditDeviceComponent } from './components/create-edit-device/create-edit-device.component';
 import { DevicesListComponent } from './components/devices-list/devices-list.component'; 
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { DevicesListComponent } from './components/devices-list/devices-list.com
     MatSidenavModule,
     MatListModule,
     MatIconModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]
